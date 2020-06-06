@@ -3,6 +3,7 @@ pipeline {
      stages {
          stage('Install Dependencies') {
              steps {
+                 sh 'make setup'
                  sh 'make install'
                  sh 'make install hadolint'
              }
