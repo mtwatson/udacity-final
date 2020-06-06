@@ -16,7 +16,7 @@ pipeline {
          }
          stage('Build') {
              steps {
-                 sh 'docker build --tag mtwatson/udacity-docker-milestone .'
+                 sh 'sudo docker build --tag mtwatson/udacity-docker-milestone .'
              }
          }
          stage('Publish') {
