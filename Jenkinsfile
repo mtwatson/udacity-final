@@ -6,6 +6,7 @@ pipeline {
                  sh 'make setup'
                  sh 'make install'
                  sh 'make install-hadolint'
+                 sh 'make install-docker'
              }
          }
          stage('Lint Dockerfile and Python') {
