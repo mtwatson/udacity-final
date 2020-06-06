@@ -35,7 +35,8 @@ pipeline {
          }
          stage('Publish') {
             withDockerRegistry([ credentialsId: 'dockerhub', url: '' ]) {
-            sh './upload_docker.sh'
+              sh './upload_docker.sh'
+            }
          }
          stage('Upload to AWS') {
               steps {
