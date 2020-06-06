@@ -19,7 +19,6 @@ install:
 install-hadolint:
 	sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.17.5/hadolint-Linux-x86_64 && ls
 	sudo chmod +x /bin/hadolint
-	sudo apt-get install pylint
 	
 install-circleci:
 	sudo wget https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.7411/circleci-cli_0.1.7411_linux_amd64.tar.
@@ -59,6 +58,6 @@ lint:
 	hadolint Dockerfile
 	# This is a linter for Python source code linter: https://www.pylint.org/
 	# This should be run from inside a virtualenv
-	pylint app.py
+	pylint --disable=R,C,W1203 app.py
 
 all: install lint test
