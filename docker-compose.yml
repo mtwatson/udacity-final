@@ -1,0 +1,7 @@
+version: '3.3'
+
+services:
+  web:
+    image: mtwatson/udacity-docker-milestone
+    ports:
+     - "80:80"
