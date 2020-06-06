@@ -22,7 +22,7 @@ pipeline {
          stage('Publish') {
              steps {
                 withDockerRegistry([ credentialsId: 'dockerhub', url: '' ]) {
-                    sh 'sudo ./upload_docker.sh'
+                    sh './upload_docker.sh'
                 }
              }
          }
