@@ -55,9 +55,9 @@ def predict():
     
     # Logging the input payload
     json_payload = request.json
-    LOG.info(f"JSON payload: \n{json_payload}")
+    LOG.info("JSON payload: \n{json_payload}")
     inference_payload = pd.DataFrame(json_payload)
-    LOG.info(f"Inference payload DataFrame: \n{inference_payload}")
+    LOG.info("Inference payload DataFrame: \n{inference_payload}")
     # scale the input
     scaled_payload = scale(inference_payload)
     # get an output prediction from the pretrained model, clf
