@@ -4,7 +4,7 @@ pipeline {
          stage('Install Dependencies') {
              steps {
                  sh 'make install'
-                 sh 'make install hadolint'
+                 sh 'make install-hadolint'
              }
          }
          stage('Lint Dockerfile and Python') {
