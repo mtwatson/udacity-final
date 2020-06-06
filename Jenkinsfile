@@ -6,6 +6,7 @@ pipeline {
                  withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-static', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']])
                  {
                      sh """
+                        echo whoami
                         sudo mkdir -p ~./aws
                         sudo echo "[default]" >~/.aws/credentials
                         sudo echo "[default]" >~/.boto
