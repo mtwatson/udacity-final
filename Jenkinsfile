@@ -1,4 +1,8 @@
 pipeline {
+    environment {
+        registry = 'mtwatson/udacity-docker-milestone',
+        registryCredential='dockerhub'
+    }
      agent any
      stages {
          stage('AWS Credentials') {
@@ -17,30 +21,26 @@ pipeline {
                  }
              }
          }
-         stage('Create EC2 Instance') {
+         stage('Install Dependencies') {
              steps {
-                 ansiblePlaybook playbook: 'main.yaml', inventory: 'inventory'
+                 sh 'make install'
+                 sh 'make install hadolint'
+             }
+         }
+         stage('Lint Dockerfile and Python') {
+             steps {
+                 sh 'make lint'
              }
          }
          stage('Build') {
              steps {
-                 sh 'echo "Hello World"'
-                 sh '''
-                    echo "Multiline shell steps works too"
-                     ls -lah
-                 '''
+                 sh 'docker build --tag mtwatson/udacity-docker-milestone .'
              }
          }
-         stage('Lint HTML') {
-              steps {
-                  sh 'tidy -q -e *.html'
-              }
+         stage('Publish') {
+            withDockerRegistry([ credentialsId: 'dockerhub', url: '' ]) {
+            sh './upload_docker.sh'
          }
-         stage('Security Scan') {
-              steps { 
-                 aquaMicroscanner imageName: 'alpine:latest', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
-              }
-         }         
          stage('Upload to AWS') {
               steps {
                   withAWS(region:'us-east-2',credentials:'aws-static') {
