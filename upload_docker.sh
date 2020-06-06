@@ -12,7 +12,7 @@ tagName="first-attempt"
 
 # Step 2:
 # Push image to a docker repository
-docker commit $dockerId mtwatson/udacity-docker-milestone
-docker push $dockerpath
+sudo docker commit $dockerId mtwatson/udacity-docker-milestone
+sudo docker push $dockerpath
 
 
