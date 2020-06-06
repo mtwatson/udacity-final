@@ -15,6 +15,7 @@ install:
 	# This should be run from inside a virtualenv
 	pip3 install --upgrade pip &&\
 		pip3 install -r requirements.txt
+	which pylint
 		
 install-hadolint:
 	sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.17.5/hadolint-Linux-x86_64 && ls
