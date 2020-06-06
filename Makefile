@@ -8,8 +8,8 @@
 setup:
 	# Create python virtualenv & source it
 	# source ~/.devops/bin/activate
-	python3 -m venv /var/lib/jenkins/workspace/udacity-final_master/.devops
-	sudo bash -c  "/var/lib/jenkins/workspace/udacity-final_master/.devops/bin/activate"
+	python3 -m venv .devops
+	sudo bash -c  ".devops/bin/activate"
 
 install:
 	# This should be run from inside a virtualenv
