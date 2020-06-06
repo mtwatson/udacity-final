@@ -1,8 +1,4 @@
 pipeline {
-    environment {
-        registry = 'mtwatson/udacity-docker-milestone',
-        registryCredential='dockerhub'
-    }
      agent any
      stages {
          stage('AWS Credentials') {
