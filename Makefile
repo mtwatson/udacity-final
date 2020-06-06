@@ -13,7 +13,6 @@ setup:
 
 install:
 	# This should be run from inside a virtualenv
-	sudo apt-get install pylint
 	pip3 install --upgrade pip &&\
 		pip3 install -r requirements.txt
 		
